@@ -12,9 +12,5 @@ while True:
     else:
         if sum(prev[1:]) > sum(prev[:-1]):
             inc += 1
-            print(prev)
-
-
-
 
 print(inc)

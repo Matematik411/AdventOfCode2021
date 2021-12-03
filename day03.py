@@ -1,6 +1,6 @@
 data_ox = []
 data_CO2 = []
-all = 0
+data_all = []
 ones = [0 for _ in range(12)]
 while True:
     try:
@@ -8,6 +8,7 @@ while True:
     except:
         break
 
+    data_all.append(line)
     data_CO2.append(line)
     data_ox.append(line)
 
@@ -22,6 +23,22 @@ def most_common(l, i):
     
     return "1" if (2*ones >= all) else "0"
 
+# part one
+gamma = ""
+epsilon = ""
+for i in range(12):
+    if most_common(data_all, i) == "1":
+        gamma += "1"
+        epsilon += "0"
+    else:
+        gamma += "0"
+        epsilon += "1"
+
+gamma = int(gamma, 2)
+epsilon = int(epsilon, 2)
+print("part one", gamma * epsilon)
+
+# part two
 #oxygen
 j = 0
 while len(data_ox) > 1:
@@ -35,24 +52,10 @@ while len(data_CO2) > 1:
     data_CO2 = [x for x in data_CO2 if x[j] != pop]
     j += 1
 
-print(data_CO2, data_ox)
-print(int(data_CO2[0], 2) * int(data_ox[0], 2))
+
+print("part two", int(data_CO2[0], 2) * int(data_ox[0], 2))
 
 
     
-# from part one
-# gamma = ""
-# epsilon = ""
-# for x in ones:
-#     if 2*x >= all:
-#         gamma += "1"
-#         epsilon += "0"
-#     else:
-#         gamma += "0"
-#         epsilon += "1"
-
-# gamma = int(gamma, 2)
-# epsilon = int(epsilon, 2)
-# print(gamma * epsilon)
 
 
